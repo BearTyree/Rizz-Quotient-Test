@@ -1,1 +1,1 @@
-# Rizz-Quotient-Test
+# Rizz Quotient Test
