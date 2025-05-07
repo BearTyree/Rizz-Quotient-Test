@@ -1,0 +1,35 @@
+name = "rizz-quotient-test"
+main = "src/index.js"
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2025-01-29"
+workers_dev = false
+route = { pattern = "rizzquotient.com/*", zone_name = "rizzquotient.com" }
+
+[vars]
+NORMING = true
+
+[assets]
+directory = "../client/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[[kv_namespaces]]
+binding = "RIZZ_KV"
+id = "9f29447c5c7c49c1b628c40ad706c0c1"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rizz-db"
+database_id = "2492feeb-2d1d-437a-8cf6-be2b05e464f7"
+
+[env.dev.vars]
+NORMING = false
+
+[[env.dev.kv_namespaces]]
+binding = "RIZZ_KV"
+id = "9f29447c5c7c49c1b628c40ad706c0c1"
+
+[[env.dev.d1_databases]]
+binding = "DB"
+database_name = "rizz-db"
+database_id = "2492feeb-2d1d-437a-8cf6-be2b05e464f7"

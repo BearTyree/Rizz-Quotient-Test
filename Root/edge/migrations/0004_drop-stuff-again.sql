@@ -1,0 +1,10 @@
+-- Migration number: 0004 	 2025-04-20T01:19:31.785Z
+DROP TABLE IF EXISTS Attempts;
+
+DROP TABLE IF EXISTS Tests;
+
+DROP TABLE IF EXISTS TestingSessions;
+
+DROP TABLE IF EXISTS Subjects;
+
+DROP TABLE IF EXISTS Users;

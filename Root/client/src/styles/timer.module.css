@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.timer {
+  position: fixed;
+  font-family: "digital";
+  font-size: larger;
+  letter-spacing: 5px;
+  color: beige;
+  background-color: black;
+  padding-left: 10px;
+  padding-right: 7px;
+  border-radius: 2px;
+  border: 1px beige solid;
+}
+
+@font-face {
+  font-family: "digital";
+  src: url(digital.woff2) format("woff2");
+  font-display: swap;
+}

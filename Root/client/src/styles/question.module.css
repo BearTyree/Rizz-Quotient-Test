@@ -1,0 +1,23 @@
+#container {
+  margin-top: 20px;
+}
+
+#container > ol {
+  margin-left: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  max-width: 50%;
+  cursor: pointer;
+}
+
+.optionText {
+  margin-left: 1em;
+  text-indent: -1em;
+}

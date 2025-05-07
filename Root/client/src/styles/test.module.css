@@ -1,0 +1,169 @@
+#container {
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1000px;
+}
+
+.thanksContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+}
+.sectionContainer {
+  /* background-color: rgb(255, 243, 205); */
+  background: linear-gradient(
+      rgba(255, 243, 205, 0.603),
+      rgba(255, 243, 205, 0.623)
+    ),
+    url(/ricepaper2.jpg);
+  margin-top: 10px;
+  border-radius: 4px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.list {
+  margin-left: 20px;
+  padding: 0;
+}
+
+.questionsInSection {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.details {
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.sectionSubmit {
+  background: linear-gradient(
+      rgba(255, 243, 205, 0.603),
+      rgba(255, 243, 205, 0.623)
+    ),
+    url(/ricepaper2.jpg);
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.directions {
+  margin-bottom: 10px;
+}
+
+.infoContainer {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  margin-bottom: 20px;
+}
+.input[type="text"] {
+  background-color: transparent;
+  padding-top: 26px;
+  padding-right: 20px;
+  padding-left: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  border-bottom: black 1px solid;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+.submit {
+  font-family: "Courier New", Courier, monospace;
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.submit::after {
+  content: " ( )";
+}
+.submit:hover::after {
+  content: " (x)";
+}
+.input[type="submit"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.loginContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.form {
+  border-radius: 5px;
+  /* background-color: rgb(255, 243, 205); */
+  background: linear-gradient(
+      rgba(255, 243, 205, 0.603),
+      rgba(255, 243, 205, 0.623)
+    ),
+    url(/ricepaper2.jpg);
+  padding: 20px;
+  background-size: 300px;
+  background-repeat: repeat;
+}
+.submitContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.info > b {
+  margin-top: 37px;
+  padding-right: 5px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

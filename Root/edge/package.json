@@ -1,0 +1,24 @@
+{
+	"name": "edge",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev --env dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"questions": "wrangler dev --test-scheduled test/uploadQuestions.js",
+		"genId": "node test/genId.mjs",
+		"prodQuestions": "wrangler kv key put --binding=RIZZ_KV \"questions\" --path=questions.json"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.7.5",
+		"vitest": "~3.0.7",
+		"wrangler": "^4.4.0"
+	},
+	"dependencies": {
+		"@prisma/client": "^6.6.0",
+		"@tsndr/cloudflare-worker-jwt": "^3.1.4",
+		"prisma": "^6.6.0"
+	}
+}

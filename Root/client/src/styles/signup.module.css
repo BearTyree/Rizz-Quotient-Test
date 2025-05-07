@@ -1,0 +1,222 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.form {
+  border-radius: 5px;
+  /* background-color: rgb(255, 243, 205); */
+  background: linear-gradient(
+      rgba(255, 243, 205, 0.603),
+      rgba(255, 243, 205, 0.623)
+    ),
+    url(/ricepaper2.jpg);
+  padding: 20px;
+}
+
+.input[type="text"] {
+  background-color: transparent;
+  padding-top: 26px;
+  padding-right: 20px;
+  padding-left: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  border-bottom: black 1px solid;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.input[type="number"] {
+  background-color: transparent;
+  padding-top: 26px;
+  padding-right: 20px;
+  padding-left: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  border-bottom: black 1px solid;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+select.input {
+  background-color: transparent;
+  padding-top: 26px;
+  padding-right: 20px;
+  padding-left: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  border-bottom: black 1px solid;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.submit {
+  font-family: "Courier New", Courier, monospace;
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.submit::after {
+  content: " ( )";
+}
+.submit:hover::after {
+  content: " (x)";
+}
+
+.submitContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.nameContainer {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.ageContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin-bottom: 20px;
+}
+
+.secondContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.sessionContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.age {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.session {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.name > b {
+  margin-top: 37px;
+  padding-right: 5px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.age > b {
+  margin-top: 37px;
+  padding-right: 5px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.session > b {
+  margin-top: 37px;
+  padding-right: 5px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.firstName {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.lastName {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ageInput {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sessionInput {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .container {
+    display: inline;
+    padding: 0 10px;
+  }
+  .form {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .nameContainer,
+  .ageContainer,
+  .sessionContainer {
+    grid-template-columns: 1fr;
+    margin-bottom: 12px;
+    margin-left: 0;
+  }
+  .secondContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    margin-bottom: 12px;
+    margin-left: 0;
+  }
+  .input[type="text"],
+  .input[type="number"],
+  select.input {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba(0, 0, 0, 0.13);
+  }
+  .submitContainer {
+    flex-direction: column;
+  }
+  .submit {
+    width: 100%;
+    padding: 12px;
+  }
+}
