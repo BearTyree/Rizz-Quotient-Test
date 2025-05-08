@@ -79,7 +79,16 @@ export default function Signup() {
             onSubmit={(e) => {
               e.preventDefault();
               submit(
-                testSessions[e.target.elements.testSession.selectedIndex].id,
+                testSessions
+                  .filter(
+                    (test) => new Date(test.startTime).getTime() > Date.now()
+                  )
+                  .sort((a, b) => {
+                    return (
+                      new Date(a.startTime).getTime() -
+                      new Date(b.startTime).getTime()
+                    );
+                  })[e.target.elements.testSession.selectedIndex].id,
                 e.target.elements.firstName.value,
                 e.target.elements.lastName.value,
                 e.target.elements.age.value

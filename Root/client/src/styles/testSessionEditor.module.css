@@ -1,0 +1,48 @@
+.outerContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.253);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerContainer {
+  width: min(90%, 1000px);
+  height: 95%;
+  background-color: rgb(255, 255, 255);
+  overflow-y: scroll;
+}
+
+.topBar {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: min(90%, 1000px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.downloads {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.addUser {
+  padding: 10px;
+}
+
+.users {
+  padding: 10px;
+}

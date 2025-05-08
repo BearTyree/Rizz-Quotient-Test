@@ -1,5 +1,5 @@
 import { getTestSessions } from "../controllers/testSessionsController";
-import { getSubjects } from "../controllers/subjectController";
+import { getSubjects, deleteSubject } from "../controllers/subjectController";
 import {
 	checkPassword,
 	verifyToken,
@@ -158,10 +158,40 @@ export async function handleAdminRequest(path, req, env) {
 
 			for (let testSession of testSessions) {
 				let subjects = await getSubjects(testSession.id, env);
-				newTestSessions.push({ testSession, subjects });
+				newTestSessions.push({ ...testSession, subjects });
 			}
 
 			return new Response(JSON.stringify(newTestSessions), {
+				headers: corsHeaders,
+			});
+		}
+		case "deleteSubject": {
+			const headers = req.headers;
+
+			const token = headers.get("Authorization").replace("Bearer ", "");
+
+			let verified = await verifyToken(token, env);
+
+			if (!verified || verified.err) {
+				return new Response("error", {
+					status: 401,
+					headers: corsHeaders,
+				});
+			}
+
+			let { id } = await req.json();
+
+			let success = await deleteSubject(id, env);
+
+			if (!success || success.err) {
+				return new Response("error deleting subject", {
+					status: 500,
+					headers: corsHeaders,
+				});
+			}
+
+			return new Response("success", {
+				status: 200,
 				headers: corsHeaders,
 			});
 		}

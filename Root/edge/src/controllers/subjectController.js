@@ -27,6 +27,25 @@ export async function getSubjects(testId, env) {
 	return await stmt.results;
 }
 
+export async function deleteSubject(id, env) {
+	try {
+		const answersStmt = await env.DB.prepare(
+			`DELETE FROM SubjectAnswers WHERE subjectId = ?`
+		)
+			.bind(id)
+			.run();
+		if (!answersStmt.results) return false;
+		const stmt = await env.DB.prepare(`DELETE FROM Subjects WHERE id = ?`)
+			.bind(id)
+			.run();
+		if (!stmt.results) return false;
+		return true;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+}
+
 export async function newSubject(
 	firstName,
 	lastName,
