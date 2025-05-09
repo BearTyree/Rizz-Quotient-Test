@@ -9,7 +9,7 @@
 		"test": "vitest",
 		"questions": "wrangler dev --test-scheduled test/uploadQuestions.js",
 		"genId": "node test/genId.mjs",
-		"prodQuestions": "wrangler kv key put --binding=RIZZ_KV \"questions\" --path=questions.json"
+		"prodQuestions": "wrangler kv key put --binding=RIZZ_KV \"questions\" --path=questions.json --remote"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.7.5",

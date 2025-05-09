@@ -23,7 +23,7 @@ database_name = "rizz-db"
 database_id = "2492feeb-2d1d-437a-8cf6-be2b05e464f7"
 
 [env.dev.vars]
-NORMING = false
+NORMING = true
 
 [[env.dev.kv_namespaces]]
 binding = "RIZZ_KV"

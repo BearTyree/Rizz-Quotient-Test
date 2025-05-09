@@ -1,5 +1,9 @@
 import { getTestSessions } from "../controllers/testSessionsController";
-import { getSubjects, deleteSubject } from "../controllers/subjectController";
+import {
+	getSubjects,
+	deleteSubject,
+	editSubject,
+} from "../controllers/subjectController";
 import {
 	checkPassword,
 	verifyToken,
@@ -192,6 +196,61 @@ export async function handleAdminRequest(path, req, env) {
 
 			return new Response("success", {
 				status: 200,
+				headers: corsHeaders,
+			});
+		}
+		case "editSubject": {
+			const headers = req.headers;
+
+			const token = headers.get("Authorization").replace("Bearer ", "");
+
+			let verified = await verifyToken(token, env);
+
+			if (!verified || verified.err) {
+				return new Response("error", {
+					status: 401,
+					headers: corsHeaders,
+				});
+			}
+
+			let { id, name, age } = await req.json();
+
+			let success = await editSubject(id, name, age, env);
+
+			if (!success || success.err) {
+				return new Response("error deleting subject", {
+					status: 500,
+					headers: corsHeaders,
+				});
+			}
+
+			return new Response("success", {
+				status: 200,
+				headers: corsHeaders,
+			});
+		}
+		case "numberOfQuestions": {
+			const headers = req.headers;
+
+			const token = headers.get("Authorization").replace("Bearer ", "");
+
+			let verified = await verifyToken(token, env);
+
+			if (!verified || verified.err) {
+				return new Response("error", {
+					status: 401,
+					headers: corsHeaders,
+				});
+			}
+
+			let questionsJson = await env.RIZZ_KV.get("questions");
+			let sections = JSON.parse(questionsJson);
+			let questions = [];
+			for (let section of sections) {
+				questions.push(...section.questions);
+			}
+
+			return new Response(JSON.stringify({ length: questions.length }), {
 				headers: corsHeaders,
 			});
 		}

@@ -11,6 +11,7 @@ export default function Admin() {
   const [testSessions, setTestSessions] = useState([]);
   const [results, setResults] = useState();
   const [sessionEditorIndex, setSessionEditorIndex] = useState(-1);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
 
   async function login(username, password) {
     const response = await fetch(
@@ -29,7 +30,24 @@ export default function Admin() {
       setToken(await response.text());
     }
   }
+
+  async function getNumberOfQuestion() {
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/admin/numberOfQuestions",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    let json = await response.json();
+    setNumberOfQuestions(json.length);
+  }
+
   async function getTestSessions() {
+    getNumberOfQuestion();
     const response = await fetch(
       import.meta.env.VITE_API_URL + "/api/admin/testSessions",
       {
@@ -42,6 +60,7 @@ export default function Admin() {
     );
     setTestSessions(await response.json());
   }
+
   async function getResults() {
     const response = await fetch(
       import.meta.env.VITE_API_URL + "/api/admin/compileResults",
@@ -57,7 +76,25 @@ export default function Admin() {
     setResults(await response.json());
   }
 
-  async function deleteUser(id) {
+  async function editSubject(id, name, age) {
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/admin/editSubject",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id, name, age }),
+      }
+    );
+    let success = await response.text();
+    if (success == "success") {
+      getTestSessions();
+    }
+  }
+
+  async function deleteSubject(id) {
     const response = await fetch(
       import.meta.env.VITE_API_URL + "/api/admin/deleteSubject",
       {
@@ -250,7 +287,9 @@ export default function Admin() {
           }
           close={() => setSessionEditorIndex(-1)}
           update={() => getTestSessions()}
-          deleteUser={(id) => deleteUser(id)}
+          deleteSubject={(id) => deleteSubject(id)}
+          editSubject={(id, name, age) => editSubject(id, name, age)}
+          numberOfQuestions={numberOfQuestions}
         />
       </>
     );

@@ -46,6 +46,24 @@ export async function deleteSubject(id, env) {
 	}
 }
 
+export async function editSubject(id, name, age, env) {
+	try {
+		const stmt = await env.DB.prepare(
+			`UPDATE Subjects SET name = ?, age = ? WHERE id = ?`
+		)
+			.bind(name, age, id)
+			.run();
+
+		if (!stmt.results) {
+			return false;
+		}
+		return true;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+}
+
 export async function newSubject(
 	firstName,
 	lastName,

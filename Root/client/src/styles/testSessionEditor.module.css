@@ -13,7 +13,7 @@
 }
 
 .innerContainer {
-  width: min(90%, 1000px);
+  width: 90%;
   height: 95%;
   background-color: rgb(255, 255, 255);
   overflow-y: scroll;
@@ -23,7 +23,7 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: min(90%, 1000px);
+  width: 90%;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -39,10 +39,26 @@
   padding: 10px;
 }
 
+.deleteSubject {
+  background-color: red;
+}
+
 .addUser {
   padding: 10px;
 }
 
 .users {
+  padding: 10px;
+}
+
+.statTable {
+  border: 1px solid black;
+}
+
+.statTable > tr > td {
+  border: 1px solid black;
+}
+
+.stats {
   padding: 10px;
 }

@@ -5,6 +5,7 @@ export async function calculateResults(env) {
 	try {
 		let testSessions = await getTestSessions(env);
 		let newTestSessions = [];
+
 		const subjectAnswersStmt = await env.DB.prepare(
 			`SELECT *
 			FROM SubjectAnswers
@@ -12,6 +13,7 @@ export async function calculateResults(env) {
 			ON SubjectAnswers.subjectId = Subjects.id
 			`
 		).all();
+
 		let subjectAnswers = subjectAnswersStmt.results
 			.filter(
 				(sa) =>
@@ -19,10 +21,14 @@ export async function calculateResults(env) {
 						.includeInResults
 			)
 			.filter((s) => s.answers);
+
+		let questionsJson = await env.RIZZ_KV.get("questions");
+
 		for (let testSession of testSessions) {
 			if (!testSession.includeInResults) {
 				continue;
 			}
+
 			const subjectAnswersStmt = await env.DB.prepare(
 				`SELECT *
 			FROM SubjectAnswers
@@ -33,6 +39,38 @@ export async function calculateResults(env) {
 			)
 				.bind(testSession.id)
 				.all();
+
+			let newSubjects = subjectAnswersStmt.results;
+
+			for (let subject of newSubjects) {
+				let sections = JSON.parse(questionsJson);
+				let questions = [];
+				let answers = JSON.parse(subject.answers);
+
+				let pointsPerQuestion = [];
+
+				for (let section of sections) {
+					questions.push(...section.questions);
+				}
+
+				for (let answer of answers) {
+					if (answer.selection == -1) {
+						pointsPerQuestion.push(0);
+						continue;
+					}
+
+					pointsPerQuestion.push(
+						questions.find((v) => v.id == answer.id).options[answer.selection]
+							.points
+					);
+				}
+
+				newSubjects[newSubjects.findIndex((s) => s.id == subject.id)] = {
+					...subject,
+					pointsPerQuestion,
+				};
+			}
+
 			newTestSessions.push({
 				testSession,
 				subjects: subjectAnswersStmt.results,
