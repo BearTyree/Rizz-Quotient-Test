@@ -2,7 +2,7 @@
 
 ## Overview
 This is a website where users receive a "rizz quotient" based on their ability to answer questions rizzfully.
-The website is made with cloudlfare workers, D1, kv, and react.
+The website is made with cloudflare workers, D1, kv, and react.
 The test is being created/edited/verified using R and the psych package.
 The goal is to either prove or disprove the existence of an r factor (general rizz factor.)
 
